@@ -6,10 +6,11 @@ on:
 
 jobs:
   docker:
+    name: "Docker Release"
     uses: na4ma4/actions/.github/workflows/docker-release.yml@main
     with:
       image: ghcr.io/na4ma4/ssh3
       platforms: 'linux/amd64,linux/arm64'
-      latest: true
+      latest-on-branch: '{{is_default_branch}}'
     secrets:
       docker_github_token: ${{ secrets.GITHUB_TOKEN }}
